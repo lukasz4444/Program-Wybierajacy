@@ -8,7 +8,7 @@ Jest to program do wprowadzania adresów gwiezdnych wrót z moda aunis.
 
 W pliku adresy.csv są zapisywane adresy
 
-Uwaga adresy podane w wspomnianym pliku edytuje się tylko w programach tekstowych (wiem że plik wjedzie w Excelu ale dodatkowy enter lub przecinek może spowodować że program się wysypie.) i są one tylko przykładami a nie istniejącymi adresami.
+Uwaga adresy podane w wspomnianym pliku edytuje się tylko w programach tekstowych (wiem że plik otworzy się w Excelu ale dodatkowy enter lub przecinek może spowodować że program się wysypie.) i są one tylko przykładami a nie istniejącymi adresami.
 
 Ważne aby podać maksymalnie 8 symboli a minimalnie 6 nie podajemy punktu początkowego program doda go sam.
 
