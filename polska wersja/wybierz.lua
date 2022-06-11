@@ -114,7 +114,6 @@ end
 -- Punkt początkowy jest automatycznie dodawany na końcu każdego adresu, więc nie ma potrzeby dodawania go do adresy.csv
 table.insert(address, "Point of Origin")
 
-os.sleep(2.5) -- Wait a bit
 term.clear()
 -- Otwieranie wrót.
 print("Wybieranie")
@@ -143,7 +142,7 @@ eventEngaged = event.listen("stargate_spin_chevron_engaged", function(evname, ad
 		os.sleep(0.5)
 		sg.engageGate()
 	else
-		print("Szewron " .. num .. " Wprowadzony")
+		print("Szewron " .. num .. " Wprowadzony -", glyph)
 		os.sleep(0.5)
 		dialNext(num)
 	end
@@ -157,9 +156,8 @@ end)
 
 failEvent = event.listen("stargate_failed", function(address, caller, reason)
 	print("Szewron z punktem początkowym się nie wprowadza.")
-	if reason == "not_enough_power" then print("Za mało zasilania aby otworzyć Gwiezdne Wrota.") end
-	if reason == "address_malformed" then print("Adres nie poprawny.") end
 	cancelEvents()
 end)
 
 while loop do os.sleep(0.1) end
+
