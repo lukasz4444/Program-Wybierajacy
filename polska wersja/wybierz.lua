@@ -156,6 +156,15 @@ end)
 
 failEvent = event.listen("stargate_failed", function(address, caller, reason)
 	print("Szewron z punktem początkowym się nie wprowadza.")
+end)
+
+-- Podanie powodu dlaczego szewron nie wprowadził się.
+
+eventEngaged = event.listen("stargate_spin_chevron_engaged", function(_, _, caller, num, lock, glyph) end)
+
+failEvent = event.listen("stargate_failed", function(_, _, caller, reason)
+	if reason == "not_enough_power" then print("Za mało zasilania aby otworzyć Gwiezdne Wrota.") end
+	if reason == "address_malformed" then print("Pod podanym adresem nie ma Gwiezdnych Wrót.") end
 	cancelEvents()
 end)
 
