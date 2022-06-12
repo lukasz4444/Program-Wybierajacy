@@ -1,5 +1,9 @@
 ## Program Wybierający
 
+### Instalacja
+
+**wpisz pastebin run C0WivPXN**
+
 Jest to program do wprowadzania adresów gwiezdnych wrót z moda aunis.
 
 1. Włączasz plik wybierz.lua
