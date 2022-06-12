@@ -3,9 +3,7 @@ event = require("event")
 os = require("os")
 sg = c.stargate
 term = require("term")
-
 address = {}
-
 glyphs = {
 	"Andromeda",
 	"Aquarius",
@@ -46,7 +44,6 @@ glyphs = {
 	"Triangulum",
 	"Virgo"
 }
-
 -- Funkcja Wprowadzania Ręcznego
 term.clear()
 function manualDial()
@@ -61,7 +58,6 @@ function manualDial()
 		else break end
 	end
 	print("Wprowadź adres w liczbach oddzielonych przecinkami lub 'q' , aby przerwać.")
-	print()
 
 	raw_address = io.read()
 	if raw_address == "q" then os.exit() end
@@ -114,12 +110,6 @@ end
 -- Punkt początkowy jest automatycznie dodawany na końcu każdego adresu, więc nie ma potrzeby dodawania go do adresy.csv
 table.insert(address, "Point of Origin")
 
-term.clear()
--- Otwieranie wrót.
-print("Wybieranie")
-for i, v in ipairs(address) do print(i, v) end
-print()
-
 loop = true
 term.clear()
 function dialNext(dialed)
@@ -136,7 +126,6 @@ function cancelEvents()
 end
 
 eventEngaged = event.listen("stargate_spin_chevron_engaged", function(evname, address, caller, num, lock, glyph)
-
 	if lock then
 		print("Szewron " .. num .. " Zablokowany")
 		os.sleep(0.5)
@@ -147,26 +136,18 @@ eventEngaged = event.listen("stargate_spin_chevron_engaged", function(evname, ad
 		dialNext(num)
 	end
 end)
-
 dialNext(0)
-
 openEvent = event.listen("stargate_open", function()
 	cancelEvents()
 end)
-
 failEvent = event.listen("stargate_failed", function(address, caller, reason)
 	print("Szewron z punktem początkowym się nie wprowadza.")
 end)
-
 -- Podanie powodu dlaczego szewron nie wprowadził się.
-
 eventEngaged = event.listen("stargate_spin_chevron_engaged", function(_, _, caller, num, lock, glyph) end)
-
 failEvent = event.listen("stargate_failed", function(_, _, caller, reason)
 	if reason == "not_enough_power" then print("Za mało zasilania aby otworzyć Gwiezdne Wrota.") end
 	if reason == "address_malformed" then print("Pod podanym adresem nie ma Gwiezdnych Wrót.") end
 	cancelEvents()
 end)
-
 while loop do os.sleep(0.1) end
-
